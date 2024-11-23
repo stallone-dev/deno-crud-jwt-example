@@ -7,7 +7,6 @@
                 "test:dev": "deno task test --reporter=dot --watch",
                 "test": "deno test --env-file=.env --allow-all"
         },
-        "unstable": ["kv"],
         "imports": {
                 "~token": "./auth/token.jwt.ts",
 
