@@ -1,0 +1,61 @@
+{
+        "tasks": {
+                "coverage:report": "deno task coverage ; deno coverage ./coverage-log --lcov > ./coverage/coverage.lcov ; genhtml -o ./coverage ./coverage/coverage.lcov",
+                "coverage:dev": "deno task coverage ; deno coverage ./coverage-log",
+                "coverage": "deno task test --reporter=dot --coverage=./coverage-log",
+
+                "test:dev": "deno task test --reporter=dot --watch",
+                "test": "deno test --env-file=.env --allow-all"
+        },
+        "unstable": ["kv"],
+        "imports": {
+                "~token": "./auth/token.jwt.ts",
+
+                "@jwt": "https://deno.land/x/jose@v5.9.6/index.ts",
+
+                "@expect": "jsr:@std/expect@^1.0",
+                "@testing": "jsr:@std/testing@^1.0/bdd"
+        },
+
+        "fmt": {
+                "exclude": ["**/build/"],
+                "lineWidth": 120,
+                "indentWidth": 8,
+                "useTabs": false,
+                "semiColons": true,
+                "singleQuote": false,
+                "proseWrap": "preserve"
+        },
+
+        "lint": {
+                "exclude": ["!*.ts"],
+                "rules": {
+                        "tags": ["recommended"],
+                        "include": [
+                                "default-param-last",
+                                "eqeqeq",
+                                "explicit-function-return-type",
+                                "explicit-module-boundary-types",
+                                "guard-for-in",
+                                "no-await-in-loop",
+                                "no-boolean-literal-for-arguments",
+                                "no-console",
+                                "no-const-assign",
+                                "no-eval",
+                                "no-external-import",
+                                "no-implicit-declare-namespace-export",
+                                "no-inferrable-types",
+                                "no-non-null-asserted-optional-chain",
+                                "no-non-null-assertion",
+                                "no-self-compare",
+                                "no-sparse-arrays",
+                                "no-sync-fn-in-async-fn",
+                                "no-throw-literal",
+                                "no-undef",
+                                "single-var-declarator",
+                                "triple-slash-reference",
+                                "verbatim-module-syntax"
+                        ]
+                }
+        }
+}
